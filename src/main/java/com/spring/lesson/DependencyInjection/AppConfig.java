@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@ComponentScan(basePackages = {"com.spring.lesson.DependencyInjection"})
+@ComponentScan(basePackages = {"com.spring.lesson"})
 public class AppConfig {
 }
