@@ -11,7 +11,7 @@
     Because the without the Data Layer the Business Layer will not function as expected.
 
   
-  ### @Component
+  #@Component
   
       Indicates that an annotated class is a "component".
       Such classes are considered as candidates for auto-detection
@@ -22,7 +22,7 @@
       e.g. the {@link Repository @Repository} annotation or AspectJ's
       {@link org.aspectj.lang.annotation.Aspect @Aspect} annotation.
       
-  ### @Autowiring
+  #@Autowiring
   
   
     Marks a constructor, field, setter method or config method as to be
