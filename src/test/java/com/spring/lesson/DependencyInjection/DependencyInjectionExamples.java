@@ -18,6 +18,7 @@ public class DependencyInjectionExamples {
      * 1) Spring --> Create an instance of this Service (GoodMorningService). => @Component
      * 2) Spring --> Needs to give the DependencyInjectionExamples the created GoodMorningService instance. => @Autowired
      *
+     * Autowire by Class 
      * 2) Once Spring identifies the @Autowired Annotation
      * it searches through the list of Components in the
      * Spring IOC for the GoodMorningService bean exists.
@@ -37,6 +38,7 @@ public class DependencyInjectionExamples {
 
 
 /**
+ * Autowire by Class
  * 1) Spring looks for the Class GoodMorningService
  */
 @Component
