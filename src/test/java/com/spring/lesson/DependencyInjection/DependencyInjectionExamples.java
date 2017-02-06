@@ -3,6 +3,7 @@ package com.spring.lesson.DependencyInjection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -29,8 +30,24 @@ public class DependencyInjectionExamples {
      * 1) Instead of autowiring using our `Impl` Class Name we can
      * Autowire using the interface our `Impl` Class implements.
      *
+     * WHAT IF THERE ARE TWO OR MORE CLASSES THAT IMPLEMENT THE SAME INTERFACE?
+     * - You can rename the variable name to match the Object we would want to
+     * be injected.
+     *
+     * e.g.
+     * @Autowired
+     * HiService goodNightServiceImpl;
+     *
+     * Another way could be to use the @Qualifier annotation as below:
+     *
+     * @Autowired
+     * @Qualifier(value="goodMorningServiceImpl")
+     * HiService service;
+     *
+     *
      */
     @Autowired
+    @Qualifier(value="goodMorningServiceImpl")
     HiService service;
 
     @Test
