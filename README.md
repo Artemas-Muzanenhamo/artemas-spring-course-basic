@@ -1,4 +1,4 @@
-#Spring
+# Spring
 
 `Business Layer` ----------------> `Data Layer`
 
@@ -11,7 +11,7 @@
     Because the without the Data Layer the Business Layer will not function as expected.
 
   
-### @Component
+### Component
   
       public @interface Component
       
@@ -22,7 +22,7 @@
       a component as well, typically a special kind of component: e.g. 
       the @Repository annotation or AspectJ's @Aspect annotation.
       
-### @Autowired
+### Autowired
 
     public @interface Autowired
     
@@ -56,7 +56,7 @@
      the javadoc for the AutowiredAnnotationBeanPostProcessor class 
      (which, by default, checks for the presence of this annotation).
   
-### @Component-Scan
+### Component-Scan
     
     public @interface ComponentScan
     
@@ -73,3 +73,35 @@
     and friends) is assumed. Furthermore, when using AnnotationConfigApplicationContext, 
     annotation config processors are always registered, meaning that any attempt to 
     disable them at the @ComponentScan level would be ignored.
+    
+## Spring Core Container Modules
+
+![Spring Core Container Modules Image](images/spring-overview.png)
+
+    - The main part of the Spring Framework is the core container.
+    - The two most important parts within the Core container is the Application Context and the Bean Factory.
+    - In the examples we were using the Application Context to launch up the Spring Beans. So all the beans were 
+    running inside the Application Context we defined.
+    - Instead of using the Application Context we could have used the BeanFactory. 
+    - The BeanFactory is the main interface which provides handling of beans, the IOC features of Spring.
+    - Application Context extends the BeanFactory and provides additional functionalities on top of it.
+    
+ ![BeanFactory vs Application Context Image](images/BeanFactoryVsApplicationContext.png)
+ 
+    - Application Context also supports integration of multiple configuration modules.
+   
+ ![ApplicationContext Based Container Image](images/Application-Context-Based-Container.jpg)
+
+    Benefits of using the Application Context over the BeanFactory includes:
+        - It provides really good integration for Aspect-Oriented-Programming. 
+        - It provides really good integration with message resources. In typical web applications
+        you would want Internationalization and Application Context has it built out of the box.
+        - Application Context also has specific event handling. It provies listeners (e.g. request/response listeners)
+        out of the box. 
+        - Application Context can handle other contexts e.g. WebApplicationContext.
+        
+The Spring Documentation does advise us to use the Application Context over the BeanFactory [here.](https://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#beans-introduction)
+    
+    
+For more info check out:
+*  [Core Container](https://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#overview-core-container)
