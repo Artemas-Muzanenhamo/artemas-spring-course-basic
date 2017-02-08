@@ -103,5 +103,54 @@
 The Spring Documentation does advise us to use the Application Context over the BeanFactory [here.](https://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#beans-introduction)
     
     
-For more info check out:
-*  [Core Container](https://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#overview-core-container)
+For more info about the Spring Core Container check out Appendix 1.
+
+## Other Modules
+
+##### Data Access/Integration
+
+###### JDBC
+
+    * Spring provides a Spring JBDC Framework that basically simplifies how you do JDBC. So if 
+    writing code to configure JDBC took 1500 lines of code, using Spring JDBC you would write 
+    150 lines of code instead (EXAMPLE!!). So it provides a lot of convenience in doing JDBC.
+
+###### ORM
+    * Spring does not have an ORM framework of its own. Instead it has excellent integration with popular
+    ORM frameworks like Hibernate and TopLink. The Spring ORM module provides integration with Hibernate
+    and TopLink and any ORM framework which implements the JPA (Java Persistence API).
+
+###### JMS
+    * The Spring JMS module enables integration over queues. For example, MQueue using JMs.
+
+###### OWM
+    * Spring OXM = Object XML Mapping 
+    * The Spring OXM modules handles conversion from XML to objects. Most applications use XML to talk to 
+    external systems. That means that the internal Java objects would need to be converted to XML.
+
+##### Web
+
+    * The most important thing about the Spring Framework is, eventhough you have the option to 
+    use SpringMVC as an MVC framework, it does provide excellent support for other MVC frameworks like 
+    Struts. 
+
+###### Portlets
+    * Spring has really good integration with portlets and it provides you with a Spring MVC portlet
+    which helps you build MVC portlet web applications.
+
+###### WebSockets
+    * Spring also has support for using Websockets.
+
+
+##### AOP
+    * Spring provides basic AOP (Aspect Oriented Programming) features. This modules works well with the 
+    popular AOP frameworks such as AspectJ.
+    
+#### Test
+    * Provides with the ability to run Unit test without you writing a lot of code and easily while using the Spring
+    Framework.
+
+
+# Appendix
+
+1)  [Core Container](https://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#overview-core-container)
