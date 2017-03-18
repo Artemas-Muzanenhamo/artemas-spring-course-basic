@@ -10,7 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Created by amuzanenhamo on 16/03/2017.
@@ -47,10 +48,47 @@ public class TopicControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/topics").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[" +
-                        "{\"id\":\"spring\",\"name\":\"Spring FrameWork\",\"description\":\"this is a spring description\"}," +
-                        "{\"id\":\"java\",\"name\":\"Core Java\",\"description\":\"this is a Java description\"}," +
-                        "{\"id\":\"javascript\",\"name\":\"Love Javascript\",\"description\":\"this is a javascript description\"}," +
-                        "{\"id\":\"python\",\"name\":\"Python\",\"description\":\"this is a python description\"}" +
+                        "{'id':'spring','name':'Spring FrameWork','description':'this is a spring description'}," +
+                        "{'id':'java','name':'Core Java','description':'this is a Java description'}," +
+                        "{'id':'javascript','name':'Love Javascript','description':'this is a javascript description'}," +
+                        "{'id':'python','name':'Python','description':'this is a python description'}" +
                         "]"));
+
+//        mockMvc.perform(MockMvcRequestBuilders.get("/topics").accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(content().json("[" +
+//                        "{'id':'spring','name':'Spring FrameWork','description':'this is a spring description'}," +
+//                        "{'id':'java','name':'Core Java','description':'this is a Java description'}," +
+//                        "{'id':'javascript','name':'Love Javascript','description':'this is a javascript description'}," +
+//                        "{'id':'python','name':'Python','description':'this is a python description'}," +
+//                        "{'id':'akka','name':'AKKA','description':'AKKA Framework is amazing'}" +
+//                        "]"));
     }
+
+    @Test
+    public void getTopicById() throws Exception{
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/topics/java").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{'id':'java','name':'Core Java','description':'this is a Java description'}"));
+    }
+
+//    @Test
+//    public void addTopic() throws Exception{
+//
+//        Topic topic = new Topic();
+//
+//        topic.setId("akka");
+//        topic.setName("AKKA");
+//        topic.setDescription("AKKA Framework is amazing");
+//
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+//        ObjectWriter writer = mapper.writer().withDefaultPrettyPrinter();
+//        String requestJson = writer.writeValueAsString(topic);
+//
+//        mockMvc.perform(MockMvcRequestBuilders.post("/topics").contentType(MediaType.APPLICATION_JSON_UTF8)
+//                .content(requestJson))
+//                .andExpect(status().isOk());
+//    }
 }
