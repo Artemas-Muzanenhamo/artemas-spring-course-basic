@@ -13,12 +13,21 @@ import java.util.List;
  *
  * @Service - Indicates that an annotated class is a "Service", originally defined by Domain-Driven Design (Evans, 2003)
  * as "an operation offered as an interface that stands alone in the model, with no encapsulated state."
-
+ *
+ * 7. Most of the Boilerplate code will be implemented by Spring for us. In this case we would have the Service calling
+ * the *Repository Classes to give us our required information back.
+ *
+ * 8. To make Spring aware that this Class is a Service, we mark it so using the @{@link Service} Annotation which
+ * registers this Class in the Spring Container. And Spring will handle this Class with the benefits that Services get
+ * from Spring. (e.g. AOP, if you want to intercept Services only in your application. Using the @Service Annotation can
+ * be handy)
  */
-
 @Service
 public class CourseService {
 
+    /**
+     * 9. We need to access the Repository instance, so we get Spring to Inject the instance for us when we need it.
+     */
     @Autowired
     private CourseRepository courseRepository;
 

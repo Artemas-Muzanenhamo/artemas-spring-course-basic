@@ -7,9 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Created by amuzanenhamo on 16/03/2017.
+ * 1. Create Our Rest Controller to direct requests to the right Method.
  */
-
 @RestController
 public class CourseController {
 
@@ -18,7 +17,15 @@ public class CourseController {
 
     /**
      * Get all Courses
-     * @return
+     *
+     * 2. Map Requests using the @{@link RequestMapping} Annotation.
+     *
+     * 3. If there are tokens in the url to be passed to a method,
+     * you will need to use the @{@link PathVariable} annotation which
+     * tells Spring to map the token and pass the token value to the
+     * parameter in the Java Method.
+     *
+     * @return - List of all the Courses.
      */
     @RequestMapping("/topics/{id}/courses")
     public List<Course> getAllCourses(@PathVariable String id){
@@ -27,8 +34,9 @@ public class CourseController {
 
     /**
      * Get Topic by ID
-     * @param id
-     * @return - Topic with the passed token {id}
+     *
+     * @param id - token passed in from the browser
+     * @return - A Course matching the token {id}
      */
     @RequestMapping("/topics/{topicId}/courses/{id}")
     public Course getCourse(@PathVariable String id){
@@ -37,7 +45,17 @@ public class CourseController {
 
     /**
      * Add a Topic in the List
-     * @param course
+     *
+     * 4. Use different RequestMethods provided by the {@link RequestMethod} Enum.
+     *
+     * 5. By defining the RequestMethod we will need to also define the value which
+     * is the requested path from the browser which will be mapped to this method.
+     *
+     * 6. Get the requestbody of any RequestMethod that requires use to store
+     * information. In this case we would use the @{@link RequestBody} Annotation
+     * to achieve this.
+     *
+     * @param topicId - the topic where the course will be added into
      */
     @RequestMapping(method=RequestMethod.POST, value = "/topics/{topicId}/courses")
     public void addCourse(@RequestBody Course course, @PathVariable String topicId){

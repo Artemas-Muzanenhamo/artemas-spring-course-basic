@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by amuzanenhamo on 20/03/2017.
  *
- * Spring JPA provides the class for us so we won't need to
+ * 10. Spring JPA provides the class for us so we won't need to
  * implement the typical CRUD methods as they are created
  * for us by Spring. With that we change our class to be an
  * interface.
@@ -20,9 +20,14 @@ import java.util.List;
 public interface CourseRepository extends CrudRepository<Course, String> {
 
     /**
-     * We need to find courses by topic Id
-     */
-    //public List<Course> getCourseByTopicId(String topicId);
+     * 11. This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
+     * CRUD refers Create, Read, Update, Delete
+     *
+     *
+     * 12. Method naming is VITAL here since Spring will use it to run Queries for us
+     * in whichever DB that we use.
+     * public List<Course> getCourseByTopicId(String topicId);
+     **/
     public List<Course> findByTopicId(String topicId);
 
 }

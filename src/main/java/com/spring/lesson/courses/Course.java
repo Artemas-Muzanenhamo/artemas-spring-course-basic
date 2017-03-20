@@ -14,16 +14,16 @@ import javax.persistence.ManyToOne;
  * https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
  */
 
-@Entity
+@Entity // 12. This tells Hibernate to make a table out of this class
 public class Course {
 
     @Id
-    private String id; //Mark as id in the relational DB.
+    private String id; // 13. Mark as id in the relational DB.
     private String name;
     private String description;
 
     @ManyToOne
-    private Topic topic; //Tell Spring-Data that this is a foreign key. Many-to-One
+    private Topic topic; // 14. Tell Spring-Data that this is a foreign key. Many-to-One
 
     public Course() {}
 
