@@ -1,9 +1,9 @@
 package com.spring.lesson.topic;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,50 +19,46 @@ import java.util.List;
 @Service
 public class TopicService {
 
-    private List<Topic> topics = new ArrayList<Topic>(Arrays.asList(
-
-            new Topic("spring", "Spring FrameWork", "this is a spring description"),
-            new Topic("java", "Core Java", "this is a Java description"),
-            new Topic("javascript", "Love Javascript", "this is a javascript description"),
-            new Topic("python", "Python", "this is a python description")
-    ));
+    @Autowired
+    private TopicRepository topicRepository;
 
     public List<Topic> getAllTopics(){
-        return topics;
+        //return topics;
+        List<Topic> list = new ArrayList<Topic>();
+        topicRepository.findAll().forEach(list :: add);
+
+        return list;
     }
 
     public Topic getTopic(String id){
-        return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+        //return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
+        return topicRepository.findOne(id);
+
     }
 
     public void addTopic(Topic topic){
-        topics.add(topic);
+        //topics.add(topic);
+        topicRepository.save(topic);
     }
 
     public void updateTopic(Topic topic, String id) {
-        for (int i=0; i<topics.size(); i++){
-
-            Topic t = topics.get(i);
-
-            if (t.getId().equals(id)){
-                topics.set(i, topic);
-                return;
-            }
-
-        }
-    }
-
-    public void deleteTopic(String id) {
-
-        topics.removeIf(t -> t.getId().equals(id));
 //        for (int i=0; i<topics.size(); i++){
 //
 //            Topic t = topics.get(i);
 //
 //            if (t.getId().equals(id)){
-//                topics.remove(i);
+//                topics.set(i, topic);
 //                return;
 //            }
+//
 //        }
+
+        topicRepository.save(topic);
+    }
+
+    public void deleteTopic(String id) {
+
+        //topics.removeIf(t -> t.getId().equals(id));
+        topicRepository.delete(id);
     }
 }
